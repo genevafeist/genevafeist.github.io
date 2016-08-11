@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geneva's Favorite Places</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var Greenlake = {lat: 47.679935, lng: -122.328592};
+        var Jetty_Island = {lat: 48.008154, lng: -122.229781 };
+        var Magnuson = {lat: 47.680257, lng: -122.253201 };
+        var Crescent = {lat: 48.058231, lng: -123.813196};
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: Greenlake
+        });
+        
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Green Lake</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Green Lake</b> is one of my favorite places because I spend a lot of time here. I have cross country practice at the Lower Woodland fields almost every night, and my brother and I spend many summmer days in the water. </p>'+
+            '<p><a </a> '+
+            '</p>'+
+            '<center><img src="greenlake.jpg" alt="Green Lake" style="width:320px;height:183px;"></center></div>'+
+            '</div>';
+        var contentString2 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Jetty Island</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Jetty Island</b> is a beautiful island that my family and friends and I visit during the summer. You  take a 5 minute ferry to get to the Island, where you can spend the whole day in the sun. The tide goes out pretty far, so my brother and I often walk on the beach and look at sea life. </p>'+
+            '<p><a </a> '+
+            '</p>'+
+            ' <center><img src="jetty.jpg" alt="Green Lake" style="width:300px;height:205px;"></center></div>'+
+            '</div>';
+        var contentString3 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Magnuson Park</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Magnuson</b> is a local park that I can bike or drive to during the summer. There are lots of swimming spots or places to have a picnic. I often come here with my brother and we spend the day swimming around the docks. </p>'+
+            '<p><a </a> '+
+            '</p>'+
+            ' </div>'+
+            '<center><img src="Magnuson.jpg" alt="Green Lake" style="width:337px;height:119px;"></center></div>';
+        var contentString4 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Lake Crescent</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Lake Crescent</b> is a lake near a campground that my family goes to every year. The water in Lake Crescent is the clearest water I have seen in my whole life, and my brother and I love to make cairns underwater.  </p>'+
+            '<p><a </a> '+
+            '</p>'+
+            ' </div>'+
+            '<center><img src="crescent.jpg" alt="Green Lake" style="width:337px;height:119px;"></center></div>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+          
+        }); 
+        var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2
+          
+        });
+        var infowindow3 = new google.maps.InfoWindow({
+          content: contentString3
+          
+        });
+        var infowindow4 = new google.maps.InfoWindow({
+          content: contentString4
+          
+        });
+        var marker = new google.maps.Marker({
+          position: Greenlake,
+          map: map,
+          title: 'Green Lake Park'
+          //icon: 'http://maps.google.com/mapfiles/kml/paddle/pink-stars.png'
+        });
+        var marker2 = new google.maps.Marker({
+          position: Jetty_Island,
+          map: map,
+          title: 'Jetty Island'
+        });
+        var marker3 = new google.maps.Marker({
+          position: Magnuson,
+          map: map,
+          title: 'Magnuson Park'
+        });
+        var marker4 = new google.maps.Marker({
+          position: Crescent,
+          map: map,
+          title: 'Lake Crescent'
+        });
+        
+        
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+          
+        });
+        
+        marker2.addListener('click', function() {
+          infowindow2.open(map, marker2);
+          
+        });
+        marker3.addListener('click', function() {
+          infowindow3.open(map, marker3);
+          
+        });
+        
+        marker4.addListener('click', function() {
+          infowindow4.open(map, marker3);
+          
+        });
+      }     
+   
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBppztnBOLj2VXiOpb94TjM3iECg_AEGJQ&callback=initMap">
+    </script>
+  </body>
+</html>
